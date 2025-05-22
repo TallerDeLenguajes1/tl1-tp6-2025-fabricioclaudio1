@@ -1,27 +1,66 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 Console.WriteLine("Hello, World!");
-int a;
-int b;
-a=10;
-b=a;
-Console.WriteLine("valor de a:"+a);
-Console.WriteLine("valor de b:" + b);
+
+//Ejercicio 3
 
 
-//Ejercicio 1
-string numeroString = Console.ReadLine();
-int numero;
+string numeroString;
+float numero = 0;
+bool resultado;
 
-bool resultado = int.TryParse(numeroString, out numero);
-
-if (resultado)
+int select = 1;
+while (select != 0)
 {
-    float num = (float)1 / numero;
-    Console.WriteLine($"1/{numero}");
-    Console.WriteLine(num);
+    Console.WriteLine("Ingrese un numero: ");
+    numeroString = Console.ReadLine();
+    resultado = float.TryParse(numeroString, out numero);
+    if (resultado)
+    {
+        select = 0;
+    }
+    else
+    {
+        Console.WriteLine("Lo que ingreso no es un numero, intentelo de nuevo");
+        select = 1;
+    }
 }
-else
+
+Console.WriteLine($"El numero es {numero}");
+
+Console.WriteLine($"Valor Absoluto: {Math.Abs(numero)}");
+Console.WriteLine($"El cuadrado: {numero * numero}");
+Console.WriteLine($"La raíz cuadrada: {Math.Sqrt(numero)}");
+Console.WriteLine($"El seno: {Math.Sin(numero)}");
+Console.WriteLine($"El coseno: {Math.Cos(numero)}");
+Console.WriteLine($"La parte entera de un tipo float: {(int)numero}");
+
+//Segunda Parte de Calculadora v2
+Console.WriteLine("Ingrese dos numeros: ");
+
+int numeroA = IngresarNumero();
+Console.WriteLine(@$"Numero ingresado: {numeroA} 
+Ingrese el otro
+");
+
+int IngresarNumero()
 {
-    Console.WriteLine("Lo que ingreso no es un numero.");
+    int select = 1;
+    
+    while (select != 0)
+    {
+        numeroString = Console.ReadLine();
+        resultado = float.TryParse(numeroString, out numero);
+        if (resultado)
+        {
+            select = 0;
+        }
+        else
+        {
+            Console.WriteLine("Lo que ingreso no es un numero, intentelo de nuevo");
+            select = 1;
+        }
+    }
+
+    return (int)numero;
 }
