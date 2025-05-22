@@ -25,15 +25,17 @@ while (select != 0)
         select = 1;
     }
 }
-
-Console.WriteLine($"El numero es {numero}");
-
-Console.WriteLine($"Valor Absoluto: {Math.Abs(numero)}");
-Console.WriteLine($"El cuadrado: {numero * numero}");
-Console.WriteLine($"La raíz cuadrada: {Math.Sqrt(numero)}");
-Console.WriteLine($"El seno: {Math.Sin(numero)}");
-Console.WriteLine($"El coseno: {Math.Cos(numero)}");
-Console.WriteLine($"La parte entera de un tipo float: {(int)numero}");
+Console.WriteLine(@$"
+========================
+El numero es {numero}
+Valor Absoluto: {Math.Abs(numero)}
+El cuadrado: {numero * numero}
+La raíz cuadrada: {Math.Sqrt(numero)}
+El seno: {Math.Sin(numero)}
+El coseno: {Math.Cos(numero)}
+La parte entera de un tipo float: {(int)numero}
+========================
+");
 
 //Segunda Parte de Calculadora v2
 Console.WriteLine("Ingrese dos numeros: ");
