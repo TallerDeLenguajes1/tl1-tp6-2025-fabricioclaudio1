@@ -4,29 +4,122 @@ using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
 
 Console.WriteLine("Hello, World!");
+<<<<<<< HEAD
 int a;
 int b;
 a = 10;
 b = a;
 Console.WriteLine("valor de a:" + a);
 Console.WriteLine("valor de b:" + b);
+=======
+
+//Ejercicio 3
+>>>>>>> CalculadoraV2
 
 
-//Ejercicio 1
-string numeroString = Console.ReadLine();
-int numero;
+string numeroString;
+float numero = 0;
+bool resultado;
 
-bool resultado = int.TryParse(numeroString, out numero);
-
-if (resultado)
+int select = 1;
+while (select != 0)
 {
-    float num = (float)1 / numero;
-    Console.WriteLine($"1/{numero}");
-    Console.WriteLine(num);
+    Console.WriteLine("Ingrese un numero: ");
+    numeroString = Console.ReadLine();
+    resultado = float.TryParse(numeroString, out numero);
+    if (resultado)
+    {
+        select = 0;
+    }
+    else
+    {
+        Console.WriteLine("Lo que ingreso no es un numero, intentelo de nuevo");
+        select = 1;
+    }
 }
-else
+Console.WriteLine(@$"
+========================
+El numero es {numero}
+Valor Absoluto: {Math.Abs(numero)}
+El cuadrado: {numero * numero}
+La raíz cuadrada: {Math.Sqrt(numero)}
+El seno: {Math.Sin(numero)}
+El coseno: {Math.Cos(numero)}
+La parte entera de un tipo float: {(int)numero}
+========================
+");
+
+//Segunda Parte de Calculadora v2
+Console.WriteLine("Ingrese dos numeros: ");
+
+int Minimo = IngresarNumero();
+Console.WriteLine(@$"
+Numero ingresado: {Minimo} 
+Ingrese el otro numero: 
+");
+int Maximo = IngresarNumero();
+Console.WriteLine(@$"
+Numero ingresado: {Maximo} 
+");
+
+int aux = 0;
+if (Minimo > Maximo)
 {
-    Console.WriteLine("Lo que ingreso no es un numero.");
+    Minimo = aux;
+    Minimo = Maximo;
+    Maximo = aux;
+}
+
+int longitud = Maximo - Minimo;
+if (longitud == 0)
+{
+    Console.WriteLine(@$"
+Numero Maximo y Minimo es: {Maximo} 
+");
+}
+else if (longitud == 1)
+{
+    Console.WriteLine(@$"
+Numero Maximo es: {Maximo} 
+Numero Minimo es: {Minimo} 
+");
+}
+else if (longitud == 2)
+{
+    Console.WriteLine(@$"
+Numero Maximo y Minimo es: {Maximo - 1} 
+");
+}
+else if (longitud > 2)
+{
+    Console.WriteLine(@$"
+Numero Maximo es: {Maximo - 1} 
+Numero Minimo es: {Minimo + 1} 
+");
+}
+
+
+
+int IngresarNumero()
+{
+    int select = 1;
+
+    while (select != 0)
+    {
+        numeroString = Console.ReadLine();
+        resultado = float.TryParse(numeroString, out numero);
+        if (resultado)
+        {
+            select = 0;
+        }
+        else
+        {
+            Console.WriteLine("Lo que ingreso no es un numero, intentelo de nuevo");
+            select = 1;
+        }
+    }
+
+    return (int)numero;
 }
 
 //Calculadora v1
